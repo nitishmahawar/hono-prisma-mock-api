@@ -1,0 +1,32 @@
+{
+  "name": "prisma7-todos-api",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc && tsc-alias",
+    "start": "node dist/src/index.js",
+    "postinstall": "prisma generate",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "db:generate": "prisma generate",
+    "db:seed": "prisma db seed",
+    "db:setup": "pnpm run db:push && pnpm run db:generate && pnpm run db:seed"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.6",
+    "@hono/zod-validator": "^0.7.5",
+    "@prisma/adapter-neon": "^7.0.1",
+    "@prisma/client": "^7.0.1",
+    "dotenv": "^17.2.3",
+    "hono": "^4.10.7",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^10.1.0",
+    "@types/node": "^20.11.17",
+    "prisma": "^7.0.1",
+    "tsc-alias": "^1.8.16",
+    "tsx": "^4.7.1",
+    "typescript": "^5.8.3"
+  }
+}

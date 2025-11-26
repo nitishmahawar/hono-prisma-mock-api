@@ -1,0 +1,143 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// User model - represents users in the system
+model User {
+  id       Int     @id @default(autoincrement())
+  name     String
+  username String  @unique
+  email    String  @unique
+  phone    String?
+  website  String?
+
+  // Address information (embedded)
+  street  String?
+  suite   String?
+  city    String?
+  zipcode String?
+  lat     String?
+  lng     String?
+
+  // Company information (embedded)
+  companyName        String?
+  companyCatchPhrase String?
+  companyBs          String?
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  posts    Post[]
+  albums   Album[]
+  todos    Todo[]
+  comments Comment[]
+
+  @@map("users")
+}
+
+// Post model - represents blog posts
+model Post {
+  id     Int    @id @default(autoincrement())
+  title  String
+  body   String @db.Text
+  userId Int
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  comments Comment[]
+
+  @@index([userId])
+  @@map("posts")
+}
+
+// Comment model - represents comments on posts
+model Comment {
+  id     Int    @id @default(autoincrement())
+  name   String
+  email  String
+  body   String @db.Text
+  postId Int
+  userId Int? // Optional: track which user made the comment
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  post Post  @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([postId])
+  @@index([userId])
+  @@map("comments")
+}
+
+// Album model - represents photo albums
+model Album {
+  id     Int    @id @default(autoincrement())
+  title  String
+  userId Int
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  photos Photo[]
+
+  @@index([userId])
+  @@map("albums")
+}
+
+// Photo model - represents photos in albums
+model Photo {
+  id           Int    @id @default(autoincrement())
+  title        String
+  url          String
+  thumbnailUrl String
+  albumId      Int
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  album Album @relation(fields: [albumId], references: [id], onDelete: Cascade)
+
+  @@index([albumId])
+  @@map("photos")
+}
+
+// Todo model - represents todo items
+model Todo {
+  id        Int     @id @default(autoincrement())
+  title     String
+  completed Boolean @default(false)
+  userId    Int
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([completed])
+  @@map("todos")
+}
