@@ -1,0 +1,28 @@
+meta {
+  name: Get All Users
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/users?page=1&limit=10
+  body: none
+  auth: none
+}
+
+params:query {
+  page: 1
+  limit: 10
+  ~search: john
+}
+
+docs {
+  Get all users with pagination and search.
+  
+  Query Parameters:
+  - page: Page number (default: 1)
+  - limit: Items per page (default: 10)
+  - search: Search by name, username, or email
+  
+  Response includes paginated user data with metadata.
+}

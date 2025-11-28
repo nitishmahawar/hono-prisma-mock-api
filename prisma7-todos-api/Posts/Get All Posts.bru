@@ -1,0 +1,30 @@
+meta {
+  name: Get All Posts
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/posts?page=1&limit=10
+  body: none
+  auth: none
+}
+
+params:query {
+  page: 1
+  limit: 10
+  ~userId: 1
+  ~search: post
+}
+
+docs {
+  Get all posts with pagination and filtering.
+  
+  Query Parameters:
+  - page: Page number (default: 1)
+  - limit: Items per page (default: 10)
+  - userId: Filter by user ID
+  - search: Search by title or body
+  
+  Response includes paginated post data with metadata.
+}

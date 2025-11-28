@@ -1,0 +1,26 @@
+meta {
+  name: Update Photo
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/photos/{{photoId}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "Updated Photo Title",
+    "url": "https://picsum.photos/600/600"
+  }
+}
+
+docs {
+  Update a photo by ID.
+  
+  All fields are optional. Only provide the fields you want to update.
+  
+  Returns the updated photo object.
+}

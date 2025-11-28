@@ -1,0 +1,30 @@
+meta {
+  name: Create Post
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/posts
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "My First Post",
+    "body": "This is the content of my post. It contains interesting information and insights.",
+    "userId": 1
+  }
+}
+
+docs {
+  Create a new post.
+  
+  All fields are required:
+  - title: Post title
+  - body: Post content
+  - userId: ID of the user creating the post
+  
+  Returns the created post object with a 201 status code.
+}

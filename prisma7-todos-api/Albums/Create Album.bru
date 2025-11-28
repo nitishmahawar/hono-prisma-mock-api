@@ -1,0 +1,28 @@
+meta {
+  name: Create Album
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/albums
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "My Vacation Photos",
+    "userId": 1
+  }
+}
+
+docs {
+  Create a new album.
+  
+  All fields are required:
+  - title: Album title
+  - userId: ID of the user creating the album
+  
+  Returns the created album object with a 201 status code.
+}

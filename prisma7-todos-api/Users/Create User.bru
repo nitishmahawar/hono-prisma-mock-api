@@ -1,0 +1,39 @@
+meta {
+  name: Create User
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/users
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "John Doe",
+    "username": "johndoe",
+    "email": "john@example.com",
+    "phone": "+1234567890",
+    "website": "https://johndoe.com",
+    "street": "123 Main St",
+    "suite": "Apt 4",
+    "city": "New York",
+    "zipcode": "10001",
+    "lat": "40.7128",
+    "lng": "-74.0060",
+    "companyName": "Acme Corp",
+    "companyCatchPhrase": "Innovation at its best",
+    "companyBs": "synergize cutting-edge solutions"
+  }
+}
+
+docs {
+  Create a new user.
+  
+  Required fields: name, username, email
+  Optional fields: phone, website, address details, company details
+  
+  Returns the created user object with a 201 status code.
+}

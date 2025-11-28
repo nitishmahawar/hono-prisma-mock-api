@@ -1,0 +1,30 @@
+meta {
+  name: Get All Photos
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/photos?page=1&limit=10
+  body: none
+  auth: none
+}
+
+params:query {
+  page: 1
+  limit: 10
+  ~albumId: 1
+  ~search: photo
+}
+
+docs {
+  Get all photos with pagination and filtering.
+  
+  Query Parameters:
+  - page: Page number (default: 1)
+  - limit: Items per page (default: 10)
+  - albumId: Filter by album ID
+  - search: Search by title
+  
+  Response includes paginated photo data with metadata.
+}

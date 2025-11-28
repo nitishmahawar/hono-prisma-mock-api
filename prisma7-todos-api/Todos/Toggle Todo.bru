@@ -1,0 +1,23 @@
+meta {
+  name: Toggle Todo
+  type: http
+  seq: 5
+}
+
+patch {
+  url: {{baseUrl}}/todos/{{todoId}}/toggle
+  body: none
+  auth: none
+}
+
+docs {
+  Toggle the completion status of a todo.
+  
+  This endpoint switches the completed status:
+  - If completed is true, it becomes false
+  - If completed is false, it becomes true
+  
+  No request body is required.
+  
+  Returns the updated todo object.
+}

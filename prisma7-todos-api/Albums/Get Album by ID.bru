@@ -1,0 +1,20 @@
+meta {
+  name: Get Album by ID
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/albums/{{albumId}}
+  body: none
+  auth: none
+}
+
+docs {
+  Get a single album by ID.
+  
+  Response includes:
+  - Album details
+  - User information
+  - All photos in the album
+}

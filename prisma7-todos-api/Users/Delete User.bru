@@ -1,0 +1,23 @@
+meta {
+  name: Delete User
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/users/{{userId}}
+  body: none
+  auth: none
+}
+
+docs {
+  Delete a user and all related data (cascading delete).
+  
+  This will also delete:
+  - All posts by the user
+  - All albums by the user
+  - All todos by the user
+  - All comments by the user
+  
+  Returns a success message with 200 status code.
+}

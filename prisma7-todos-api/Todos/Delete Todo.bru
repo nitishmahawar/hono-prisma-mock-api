@@ -1,0 +1,17 @@
+meta {
+  name: Delete Todo
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{baseUrl}}/todos/{{todoId}}
+  body: none
+  auth: none
+}
+
+docs {
+  Delete a todo by ID.
+  
+  Returns a success message with 200 status code.
+}

@@ -1,0 +1,32 @@
+meta {
+  name: Get All Comments
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/comments?page=1&limit=10
+  body: none
+  auth: none
+}
+
+params:query {
+  page: 1
+  limit: 10
+  ~postId: 1
+  ~userId: 1
+  ~search: comment
+}
+
+docs {
+  Get all comments with pagination and filtering.
+  
+  Query Parameters:
+  - page: Page number (default: 1)
+  - limit: Items per page (default: 10)
+  - postId: Filter by post ID
+  - userId: Filter by user ID
+  - search: Search by name, email, or body
+  
+  Response includes paginated comment data with metadata.
+}

@@ -1,0 +1,32 @@
+meta {
+  name: Get All Todos
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/todos?page=1&limit=10
+  body: none
+  auth: none
+}
+
+params:query {
+  page: 1
+  limit: 10
+  ~userId: 1
+  ~completed: false
+  ~search: todo
+}
+
+docs {
+  Get all todos with pagination and filtering.
+  
+  Query Parameters:
+  - page: Page number (default: 1)
+  - limit: Items per page (default: 10)
+  - userId: Filter by user ID
+  - completed: Filter by completion status (true/false)
+  - search: Search by title
+  
+  Response includes paginated todo data with metadata.
+}

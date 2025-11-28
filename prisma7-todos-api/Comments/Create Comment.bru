@@ -1,0 +1,36 @@
+meta {
+  name: Create Comment
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/comments
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "John Doe",
+    "email": "john@example.com",
+    "body": "Great post! Thanks for sharing this valuable information.",
+    "postId": 1,
+    "userId": 1
+  }
+}
+
+docs {
+  Create a new comment.
+  
+  Required fields:
+  - name: Commenter's name
+  - email: Commenter's email
+  - body: Comment content
+  - postId: ID of the post being commented on
+  
+  Optional fields:
+  - userId: ID of the user making the comment
+  
+  Returns the created comment object with a 201 status code.
+}

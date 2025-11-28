@@ -1,0 +1,32 @@
+meta {
+  name: Create Photo
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/photos
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "Beautiful Sunset",
+    "url": "https://picsum.photos/600/600",
+    "thumbnailUrl": "https://picsum.photos/150/150",
+    "albumId": 1
+  }
+}
+
+docs {
+  Create a new photo.
+  
+  All fields are required:
+  - title: Photo title
+  - url: Full-size photo URL
+  - thumbnailUrl: Thumbnail photo URL
+  - albumId: ID of the album this photo belongs to
+  
+  Returns the created photo object with a 201 status code.
+}

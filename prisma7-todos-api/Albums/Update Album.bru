@@ -1,0 +1,25 @@
+meta {
+  name: Update Album
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/albums/{{albumId}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "Updated Album Title"
+  }
+}
+
+docs {
+  Update an album by ID.
+  
+  Only the title field can be updated.
+  
+  Returns the updated album object.
+}

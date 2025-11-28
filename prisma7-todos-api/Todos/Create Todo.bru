@@ -1,0 +1,32 @@
+meta {
+  name: Create Todo
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/todos
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "Complete project documentation",
+    "completed": false,
+    "userId": 1
+  }
+}
+
+docs {
+  Create a new todo.
+  
+  Required fields:
+  - title: Todo title
+  - userId: ID of the user creating the todo
+  
+  Optional fields:
+  - completed: Completion status (default: false)
+  
+  Returns the created todo object with a 201 status code.
+}

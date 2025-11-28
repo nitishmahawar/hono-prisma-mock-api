@@ -1,0 +1,26 @@
+meta {
+  name: Update Post
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/posts/{{postId}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "Updated Title",
+    "body": "Updated content with new information."
+  }
+}
+
+docs {
+  Update a post by ID.
+  
+  All fields are optional. Only provide the fields you want to update.
+  
+  Returns the updated post object.
+}

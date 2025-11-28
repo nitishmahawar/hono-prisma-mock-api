@@ -1,0 +1,20 @@
+meta {
+  name: Get Comment by ID
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/comments/{{commentId}}
+  body: none
+  auth: none
+}
+
+docs {
+  Get a single comment by ID.
+  
+  Response includes:
+  - Comment details
+  - Post information
+  - User information (if available)
+}

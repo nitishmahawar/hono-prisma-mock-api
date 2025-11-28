@@ -1,0 +1,26 @@
+meta {
+  name: Update User
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/users/{{userId}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "John Updated",
+    "email": "newemail@example.com"
+  }
+}
+
+docs {
+  Update a user by ID.
+  
+  All fields are optional. Only provide the fields you want to update.
+  
+  Returns the updated user object.
+}

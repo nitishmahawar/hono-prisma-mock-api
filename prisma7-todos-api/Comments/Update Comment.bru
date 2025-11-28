@@ -1,0 +1,26 @@
+meta {
+  name: Update Comment
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/comments/{{commentId}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Updated Name",
+    "body": "Updated comment with new thoughts."
+  }
+}
+
+docs {
+  Update a comment by ID.
+  
+  All fields are optional. Only provide the fields you want to update.
+  
+  Returns the updated comment object.
+}

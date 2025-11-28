@@ -1,0 +1,19 @@
+meta {
+  name: Delete Album
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/albums/{{albumId}}
+  body: none
+  auth: none
+}
+
+docs {
+  Delete an album and all related photos.
+  
+  This will cascade delete all photos in the album.
+  
+  Returns a success message with 200 status code.
+}

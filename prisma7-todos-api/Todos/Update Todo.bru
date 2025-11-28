@@ -1,0 +1,26 @@
+meta {
+  name: Update Todo
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/todos/{{todoId}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "Updated todo title",
+    "completed": true
+  }
+}
+
+docs {
+  Update a todo by ID.
+  
+  All fields are optional. Only provide the fields you want to update.
+  
+  Returns the updated todo object.
+}

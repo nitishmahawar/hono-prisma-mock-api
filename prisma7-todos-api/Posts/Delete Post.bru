@@ -1,0 +1,19 @@
+meta {
+  name: Delete Post
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/posts/{{postId}}
+  body: none
+  auth: none
+}
+
+docs {
+  Delete a post and all related comments.
+  
+  This will cascade delete all comments associated with this post.
+  
+  Returns a success message with 200 status code.
+}
